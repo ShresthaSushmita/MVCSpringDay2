@@ -1,0 +1,89 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.springday1</groupId>
+  <artifactId>SpringMVCDay2</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>SpringMVCDay2 Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+    <spring.version>5.3.23</spring.version> <!-- Define a consistent Spring version -->
+    <jakarta.servlet.version>6.0.0</jakarta.servlet.version> <!-- Modern Jakarta Servlet API -->
+    <jakarta.jstl.version>3.0.0</jakarta.jstl.version> <!-- Modern Jakarta JSTL API -->
+    <mysql.connector.version>8.0.33</mysql.connector.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <!-- Spring MVC (includes core, beans, context, web transitively) -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!-- Spring JDBC -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version> <!-- Use the same consistent version -->
+    </dependency>
+
+    <!-- Jakarta Servlet API (required by Spring 6 and Tomcat 10+) -->
+    <!-- Provided scope means the container (Tomcat) provides it -->
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>${jakarta.servlet.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Jakarta Server Pages Standard Tag Library (JSTL) API -->
+    <!-- Need both the API and an implementation for JSPs -->
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <version>${jakarta.jstl.version}</version>
+    </dependency>
+    <!-- JSTL Implementation (e.g., from GlassFish) -->
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+      <version>3.0.1</version> <!-- Compatible implementation version -->
+    </dependency>
+
+
+    <!-- MySQL Connector -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>${mysql.connector.version}</version>
+    </dependency>
+
+    <!-- JUnit for testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!--
+    Removed explicitly listed spring-core, spring-context, spring-web
+    as spring-webmvc brings them in transitively.
+    If you need specific features not pulled by webmvc, add them back,
+    BUT use the ${spring.version} property for all of them.
+    -->
+
+  </dependencies>
+</project>
